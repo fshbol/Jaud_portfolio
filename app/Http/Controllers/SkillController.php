@@ -11,6 +11,6 @@ class SkillController extends Controller
     {
         $skills = Skill::all(); //Eloquent ORM
 
-        return view('home', compact('skills'));
+        return view('pages.skills', compact('skills'));
     }
 }
