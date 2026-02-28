@@ -20,19 +20,8 @@ use App\Http\Controllers\ContactController;
 Route::get('/', [Homecontroller::class, 'index']);
 Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');;
 Route::get('/project', [ProjectController::class, 'index']);
-Route::get('/experience', [ExperienceController::class, 'index']);
+Route::get('/experience', [ExperienceController::class, 'index'])->middleware('Erika_Portfolio.access');
 Route::get('/contact', [ContactController::class, 'index']);
 
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/projects', function () {
-    return view('projects');
-});
-
-Route::get('/contacts', function () {
-    return view('contacts');
-});
 
 
