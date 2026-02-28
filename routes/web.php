@@ -5,6 +5,7 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +18,10 @@ use App\Http\Controllers\ExperienceController;
 */
 
 Route::get('/', [Homecontroller::class, 'index']);
-Route::get('/skills', [SkillController::class, 'index']);
+Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');;
 Route::get('/project', [ProjectController::class, 'index']);
 Route::get('/experience', [ExperienceController::class, 'index']);
+Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
@@ -32,4 +34,5 @@ Route::get('/projects', function () {
 Route::get('/contacts', function () {
     return view('contacts');
 });
+
 

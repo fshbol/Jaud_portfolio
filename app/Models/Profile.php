@@ -7,14 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $table = 'profiles';
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'title',
-        'bio',
-        'email',
-        'location'
+    use HasFactory;
 
+    protected $table = 'profiles';
+
+    protected $fillable = [
+        'title',
+        'description',
     ];
 }

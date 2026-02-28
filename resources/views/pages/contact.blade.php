@@ -1,26 +1,30 @@
 @extends('layouts.content')
 
-@section('title', 'Skills')
+@section('title', 'Contacts')
 
 @section('content')
 
 <div class="container my-5">
-     <h1 class="text-center mb-4 scroll-animate">My Skills</h1>
     <div class="row text-center">
-        @foreach($skills as $skill)
+        @foreach($contact as $contact)
         <div class="col-md-4 mb-4 scroll-animate">
-            <div class="square-card p-5 shadow-sm d-flex flex-column h-100 skill-card">
-                <img src="{{ asset($skill->image) }}" 
-                     alt="{{ $skill->name }}" 
-                     class="mb-3 mx-auto" 
+            <div class="square-card p-3 shadow-sm d-flex flex-column h-100">
+                <img src="{{ asset($contact->image) }}"
+                     alt="{{ $contact->title }}"
+                     class="mb-3 mx-auto"
                      style="width:80px; height:auto;">
-                <h3>{{ $skill->name }}</h3>
-
-                <div class="skill-level d-inline-block px-3 py-1 mt-2">
-                    {{ $skill->level }}
-                </div>
-
-                <p class="mt-auto">{{ $skill->description }}</p>
+                <h3>{{ $contact->title }}</h3>
+                <p class="mt-auto">
+                    @if($contact->title === 'Email')
+                        {{-- Show email as plain text (not clickable) --}}
+                        {{ $contact->description }}
+                    @else
+                        {{-- Make other links clickable --}}
+                        <a href="{{ $contact->description }}" target="_blank">
+                            {{ $contact->description }}
+                        </a>
+                    @endif
+                </p>
             </div>
         </div>
         @endforeach
@@ -28,7 +32,6 @@
 </div>
 
 <script>
-    
     document.addEventListener("DOMContentLoaded", function() {
         const elements = document.querySelectorAll(".scroll-animate");
 
